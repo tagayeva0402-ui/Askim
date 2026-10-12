@@ -1,0 +1,160 @@
+
+<!DOCTYPE html>
+<html lang="az">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aşkım Taleh üçün ❤️</title>
+<style>
+*{box-sizing:border-box}
+body{
+ margin:0;min-height:100vh;display:flex;
+ justify-content:center;align-items:center;
+ padding:18px;font-family:Arial,sans-serif;
+ background:linear-gradient(135deg,#ffd6e7,#f1d8ff,#fff0f5);
+ color:#843453;text-align:center;overflow-x:hidden
+}
+main{
+ width:100%;max-width:440px;background:#ffffffed;
+ padding:26px 20px;border-radius:28px;
+ box-shadow:0 12px 40px #c66a9330
+}
+h1{color:#e34380;font-size:27px}
+h2{font-size:21px}
+.heart{font-size:48px;animation:pulse 1s infinite}
+@keyframes pulse{50%{transform:scale(1.12)}}
+button{
+ width:100%;padding:14px;margin-top:10px;
+ border:0;border-radius:15px;background:#f8c0d8;
+ color:#762b4a;font-size:16px;font-weight:bold;
+ cursor:pointer
+}
+button:active{transform:scale(.98)}
+#message{margin-top:16px;line-height:1.6}
+.small{font-size:13px;color:#a05d7b}
+.heart-float{
+ position:fixed;bottom:-30px;pointer-events:none;
+ animation:rise 4s linear forwards
+}
+@keyframes rise{
+ to{transform:translateY(-110vh) rotate(25deg);opacity:0}
+}
+</style>
+</head>
+<body>
+<main>
+<div class="heart">💗</div>
+<h1>Aşkım Taleh</h1>
+<div id="game">
+<p>Salam, mənim ən malim ! 🥹❤️</p>
+<p>Sənin üçün gizli bir tapmaca
+var.</p>
+<p>Sualları cavabla, axırda səni gözləyən sürprizi aç! 💌</p>
+<button onclick="start()">Başlayaq, aşkım! 💋</button>
+</div>
+<div id="message"></div>
+</main>
+<script>
+const questions=[
+{
+q:"1. Mən səndən ən çox nə istəyirəm? 😏",
+a:["Mənə yemək almağını 🍕","Məni sevməyini və qucaqlamağını ❤️","Mənə pul verməyini 💸"],
+c:2
+},
+{
+q:"2. Mən səndən küsəndə nə etməlisən? 😂",
+a:["Məni tək qoymalısan","Mənə şirin sözlər deyib könlümü almalısan 🥹","Sən də evez cixmalisan 😴"],
+c:2
+},
+{
+q:"3. Birlikdə gələcəyimiz necə olsun istəyərəm? 💍",
+a:["Hərəmiz ayrı planetdə yaşayaq 👽","her gun dalasaq 💅","bir birimizi yeyek 😂"],
+c:2
+},
+{
+q:"4. Səncə, mən səni nə qədər sevirəm? 🫶🏻",
+a:["Bir az","Orta səviyyədə 😂","Sözlə ifadə edə bilməyəcəyim qədər! 💗"],
+c:2
+},
+{
+q:"5. İndi səndən bir şey istəsəm, nə olardı? 😚",
+a:["Məni möhkəm qucaqlamağın 🫂","ilgi vermeni 🫶🏻"," dalasmagimizi "],
+c:2
+}
+];
+let n=0;
+function start(){
+ n=0;
+ document.getElementById("message").innerHTML="";
+ show();
+}
+function show(){
+ if(n>=questions.length){finish();return}
+ const q=questions[n];
+ let html=`<p class="small">💌 Sual ${n+1} / ${questions.length}</p>
+ <h2>${q.q}</h2>`;
+ q.a.forEach((a,i)=>{
+ html+=`<button onclick="answer(${i})">${a}</button>`;
+ });
+ document.getElementById("game").innerHTML=html;
+}
+function answer(i){
+ if(i===questions[n].c){
+ document.getElementById("message").innerHTML=
+ "Ayyy, düz tapdın, aşkım! 😍❤️";
+ n++;
+ setTimeout(show,800);
+ }else{
+ document.getElementById("message").innerHTML=
+ "Ayyy, səhv oldu 😂 Bir də düşün, ay mal 💗";
+ }
+}
+function finish(){
+ document.getElementById("message").innerHTML="";
+ document.getElementById("game").innerHTML=`
+ <div class="heart">💌</div>
+ <h1>Təbriklər, Taleh!</h1>
+ <p>Bütün sualları keçdin, aşkım! 😍</p>
+ <p>İndi sənin üçün ən vacib sürpriz var...</p>
+ <button onclick="letter()">Məktubunu aç ❤️</button>`;
+}
+function letter(){
+ document.getElementById("game").innerHTML=`
+ <div class="heart">💖</div>
+ <h1>Səni sevirəm, Taleh!</h1>
+ <p><b>Mənim mal aşkım ❤️</b></p>
+ <p>
+ Bu balaca oyunu sənin üçün hazırladım,
+ çünki üzündə bir təbəssüm yaratmaq istəyirəm. 🥹
+ <br><br>
+ Səninlə danışmaq, gülmək, naz etmək,
+ bəzən küsüb sonra barışmaq belə mənim üçün
+ özəldir. ❤️
+ <br><br>
+ Həyatımda olduğun üçün çox xoşbəxtəm.
+ Arzum budur ki, birlikdə daha çox gözəl
+ xatirələrimiz olsun və hər zaman bir-birimizin
+ yanında olaq. 🫂
+ <br><br>
+ <b>Yaxşı ki, varımsan, mənim Talehim! 💋</b>
+ <br><br>
+ Səni dünəndən çox, sabahdan az sevirəm. ♾️❤️
+ </p>
+ <div class="heart">💗</div>
+ <p>İndi gəl məni qucaqlamağa, borclusan! 😂🫂</p>`;
+}
+function hearts(){
+ const h=document.createElement("div");
+ h.className="heart-float";
+ h.textContent=["💗","💖","💕","❤️","💘"][Math.floor(Math.random()*5)];
+ h.style.left=Math.random()*95+"vw";
+ h.style.fontSize=(18+Math.random()*20)+"px";
+ document.body.appendChild(h);
+ setTimeout(()=>h.remove(),4000);
+}
+setInterval(hearts,700);
+</script>
+</body>
+</html>
+
+
